@@ -1,0 +1,22 @@
+{
+  "overview": "MediVault is a feature-complete healthcare operations platform with guided walkthroughs, demo reset, and showcase-ready presentation modes for all five clinical roles.",
+  "features": [
+    "Demo Reset button in Admin dashboard to restore clean demo state",
+    "Hospital role guided 6-step walkthrough (consent, adherence, diagnostics, reporting, audit)",
+    "Lab role guided 5-step walkthrough (report upload, diagnostics, audit trail, ecosystem)",
+    "Showcase stability — walkthroughs never block navigation, always dismissible/restartable",
+    "Realistic demo data across all dashboards with believable medicine names and operational states",
+    "Presentation mode toggle for projector and large-display readability"
+  ],
+  "category": "healthcare-platform",
+  "tags": [
+    "healthcare",
+    "operations",
+    "demo",
+    "showcase",
+    "walkthroughs",
+    "audit",
+    "lifecycle"
+  ],
+  "last_updated": "2026-05-23T12:25:12.370Z"
+}

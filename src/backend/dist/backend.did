@@ -1,0 +1,616 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type WorkflowStage = 
+ record {
+   actorRole: text;
+   events: vec ActivityEventView;
+   stageType: text;
+   status: text;
+ };
+type WorkflowChain = 
+ record {
+   medicine: opt record {
+                   id: text;
+                   name: text;
+                 };
+   stages: vec WorkflowStage;
+ };
+type UserRole__1 = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserRole = 
+ variant {
+   Admin;
+   Hospital;
+   Lab;
+   Patient;
+   Pharmacy;
+ };
+type UserProfile = 
+ record {
+   email: text;
+   id: text;
+   isActive: bool;
+   name: text;
+   phone: opt text;
+   "principal": principal;
+   registrationDate: Timestamp;
+   role: UserRole;
+   telegramChatId: opt text;
+   telegramEnabled: bool;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = int;
+type TelegramLog = 
+ record {
+   errorMessage: opt text;
+   id: text;
+   medicineId: text;
+   medicineName: text;
+   reminderTime: text;
+   status: text;
+   timestamp: int;
+   userPrincipal: principal;
+ };
+type SyncedMedicine = 
+ record {
+   batchNumber: text;
+   category: MedicineCategory;
+   createdAt: Timestamp;
+   dosage: text;
+   expiryDate: Timestamp;
+   frequency: text;
+   id: text;
+   name: text;
+   ownerPrincipal: principal;
+   prescriptionUrl: opt text;
+   purchaseTimestamp: Timestamp;
+   sourcePharmacy: text;
+   sourcePrincipal: principal;
+ };
+type ReportDataPoint = 
+ record {
+   dataLabel: text;
+   metadata: opt text;
+   value: text;
+ };
+type ReportData = 
+ record {
+   dataPoints: vec ReportDataPoint;
+   generatedAt: int;
+   reportType: text;
+ };
+type Report = 
+ record {
+   fileUrl: text;
+   id: text;
+   labPrincipal: principal;
+   patientId: text;
+   reportType: text;
+   uploadDate: Timestamp;
+ };
+type Reminder = 
+ record {
+   createdAt: Timestamp;
+   id: text;
+   isEnabled: bool;
+   medicineId: text;
+   reminderTime: text;
+   userPrincipal: principal;
+   voiceEnabled: bool;
+ };
+type PharmacySyncLog = 
+ record {
+   batchNumber: text;
+   errorMessage: opt text;
+   expiryDate: Timestamp;
+   id: text;
+   medicineName: text;
+   patientPrincipal: principal;
+   pharmacyPrincipal: principal;
+   quantity: nat;
+   status: variant {
+             Duplicate;
+             Failed;
+             Success;
+           };
+   syncedAt: Timestamp;
+ };
+type OrderStatus = 
+ variant {
+   Cancelled;
+   Delivered;
+   Pending;
+   Shipped;
+ };
+type Order = 
+ record {
+   deliveryDate: opt Timestamp;
+   id: text;
+   medicineName: text;
+   orderDate: Timestamp;
+   patientId: text;
+   pharmacyId: text;
+   quantity: nat;
+   status: OrderStatus;
+ };
+type NotificationRecord = 
+ record {
+   createdAt: Timestamp;
+   id: text;
+   isRead: bool;
+   message: text;
+   notifType: NotifType;
+   recipientPrincipal: principal;
+   relatedId: opt text;
+   role: UserRole;
+ };
+type NotifType = 
+ variant {
+   BookingCompleted;
+   BookingConfirmed;
+   ConsentChanged;
+   ExpiringSoon;
+   LowStock;
+   MedicineSynced;
+   ReminderMissed;
+   ReportReady;
+ };
+type MedicineCategory = 
+ variant {
+   Capsule;
+   Injection;
+   Liquid;
+   Other;
+   Tablet;
+   Topical;
+ };
+type Medicine = 
+ record {
+   category: MedicineCategory;
+   createdAt: Timestamp;
+   dosage: text;
+   expiryDate: Timestamp;
+   frequency: text;
+   id: text;
+   name: text;
+   ownerPrincipal: principal;
+   prescriptionUrl: opt text;
+ };
+type LogExportRequest = 
+ record {
+   errorMessage: opt text;
+   exportType: text;
+   fileSizeBytes: opt nat;
+   fileType: text;
+   filename: text;
+   filtersApplied: text;
+   status: text;
+   userRole: text;
+ };
+type InventoryItem = 
+ record {
+   category: MedicineCategory;
+   expiryDate: Timestamp;
+   id: text;
+   lastUpdated: Timestamp;
+   maxThreshold: nat;
+   medicineName: text;
+   minThreshold: nat;
+   pharmacyPrincipal: principal;
+   stockQuantity: nat;
+ };
+type ExportLogEntry = 
+ record {
+   errorMessage: opt text;
+   exportType: text;
+   fileSizeBytes: opt nat;
+   fileType: text;
+   filename: text;
+   filtersApplied: text;
+   id: text;
+   status: text;
+   timestamp: int;
+   userId: principal;
+   userRole: text;
+ };
+type DoseLog = 
+ record {
+   id: text;
+   isOnTime: bool;
+   medicineId: text;
+   takenAt: Timestamp;
+   userPrincipal: principal;
+ };
+type DiagnosticBooking = 
+ record {
+   createdAt: Timestamp;
+   id: text;
+   labPrincipal: principal;
+   patientPrincipal: principal;
+   preferredDate: text;
+   reason: opt text;
+   reportUploadedAt: opt Timestamp;
+   reportUrl: opt text;
+   status: BookingStatus;
+   statusHistory: vec BookingStatusEntry;
+   testType: text;
+ };
+type ConsentRecord = 
+ record {
+   adherenceSharing: bool;
+   auditTrail: vec ConsentAuditEntry;
+   diagnosticAccess: bool;
+   id: text;
+   lastUpdated: Timestamp;
+   patientPrincipal: principal;
+   prescriptionSharing: bool;
+ };
+type ConsentAuditEntry = 
+ record {
+   action: text;
+   field: text;
+   timestamp: Timestamp;
+ };
+type BookingStatusEntry = 
+ record {
+   note: text;
+   status: BookingStatus;
+   timestamp: Timestamp;
+ };
+type BookingStatus = 
+ variant {
+   Booked;
+   Completed;
+   Confirmed;
+   InProgress;
+   ReportUploaded;
+ };
+type AuditSearchQuery = 
+ record {
+   eventType: opt text;
+   fromTimestamp: opt int;
+   limit: nat;
+   offset: nat;
+   role: opt text;
+   searchText: opt text;
+   severity: opt text;
+   toTimestamp: opt int;
+ };
+type Appointment = 
+ record {
+   dateTime: Timestamp;
+   id: text;
+   notes: text;
+   patientName: text;
+   status: text;
+ };
+type ActivityEventView = 
+ record {
+   eventActor: record {
+                 principalId: principal;
+                 role: ActivityActorRole;
+               };
+   eventType: ActivityEventType;
+   id: text;
+   metadata: opt text;
+   readBy: vec principal;
+   resourceId: opt text;
+   timestamp: int;
+ };
+type ActivityEventType = 
+ variant {
+   BookingAccepted;
+   BookingReceived;
+   CSVUploaded;
+   ConsentAccessGranted;
+   ConsentAccessRevoked;
+   ConsentGranted;
+   ConsentRevoked;
+   DiagnosticBooked;
+   DoseMarkedTaken;
+   EcosystemSyncStats;
+   ExpiryAlertTriggered;
+   ExpiryWarningTriggered;
+   HospitalInventoryUpdated;
+   HospitalMedicineAdded;
+   InventoryItemAdded;
+   InventoryStatusChanged;
+   MedicineAddedManually;
+   MedicineSold;
+   MedicineSyncedFromPharmacy;
+   MedicineSyncedToPatient;
+   PatientAdherenceViewed;
+   QRScanCompleted;
+   ReminderCompleted;
+   ReminderCreated;
+   ReminderMissed;
+   ReportCompleted;
+   ReportUploaded;
+   ReportViewedDownloaded;
+   RestockFulfilled;
+   RoleChanged;
+   SampleCollected;
+   SystemAlert;
+   TelegramConnected;
+   TelegramDisconnected;
+   TestProcessingStarted;
+   UserCreated;
+ };
+type ActivityActorRole = 
+ variant {
+   Admin;
+   Diagnostic;
+   Hospital;
+   Patient;
+   Pharmacy;
+ };
+service : {
+  _initializeAccessControl: () -> ();
+  assignCallerUserRole: (user: principal, role: UserRole__1) -> ();
+  createAppointment: (patientName: text, dateTime: int, notes: text) ->
+   (variant {
+      err: text;
+      ok: Appointment;
+    });
+  createDiagnosticBooking: (labPrincipal: principal, testType: text,
+   preferredDate: text, reason: opt text) ->
+   (variant {
+      err: text;
+      ok: DiagnosticBooking;
+    });
+  createInventoryItem: (medicineName: text, stockQuantity: nat, minThreshold:
+   nat, maxThreshold: nat, expiryDate: int, category: MedicineCategory) ->
+   (variant {
+      err: text;
+      ok: InventoryItem;
+    });
+  createMedicine: (name: text, dosage: text, frequency: text, expiryDate:
+   int, category: MedicineCategory) -> (variant {
+                                          err: text;
+                                          ok: Medicine;
+                                        });
+  createOrder: (patientId: text, pharmacyId: text, medicineName: text,
+   quantity: nat) -> (variant {
+                        err: text;
+                        ok: Order;
+                      });
+  createReminder: (medicineId: text, reminderTime: text, voiceEnabled:
+   bool) -> (variant {
+               err: text;
+               ok: Reminder;
+             });
+  createReport: (patientId: text, fileUrl: text, reportType: text) ->
+   (variant {
+      err: text;
+      ok: Report;
+    });
+  deleteExportLog: (id: text) -> (bool);
+  deleteInventoryItem: (id: text) -> (variant {
+                                        err: text;
+                                        ok;
+                                      });
+  deleteMedicine: (id: text) -> (variant {
+                                   err: text;
+                                   ok;
+                                 });
+  deleteReminder: (id: text) -> (variant {
+                                   err: text;
+                                   ok;
+                                 });
+  getAdherenceScore: (medicineId: text) -> (float64) query;
+  getAllExportLogs: () -> (vec ExportLogEntry) query;
+  getAllUsers: () -> (vec UserProfile) query;
+  getAppointments: () -> (vec Appointment) query;
+  getAuditEventsByActor: (actorId: text) -> (vec ActivityEventView) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole__1) query;
+  getConsentAuditTrail: () -> (vec ConsentAuditEntry) query;
+  getConsentedPatients: () ->
+   (vec record {
+          consent: ConsentRecord;
+          patient: UserProfile;
+        }) query;
+  getDiagnosticBooking: (bookingId: text) -> (opt DiagnosticBooking) query;
+  getEventById: (id: text) -> (opt ActivityEventView) query;
+  getExpiryStats: () ->
+   (record {
+      expired: nat;
+      expiringSoon: nat;
+      safe: nat;
+    }) query;
+  getExportAnalytics: () ->
+   (record {
+      exportsByFormat: vec record {
+                             text;
+                             nat;
+                           };
+      exportsByRole: vec record {
+                           text;
+                           nat;
+                         };
+      exportsByType: vec record {
+                           text;
+                           nat;
+                         };
+      failureCount: nat;
+      successCount: nat;
+      totalExports: nat;
+    }) query;
+  getInventoryStats: () -> (vec record {
+                                  text;
+                                  nat;
+                                }) query;
+  getLabDiagnosticBookings: () -> (vec DiagnosticBooking) query;
+  getLabReports: () -> (vec Report) query;
+  getMedicineLcChain: (medicineId: text) -> (vec ActivityEventView) query;
+  getMyConsent: () -> (opt ConsentRecord) query;
+  getMyDiagnosticBookings: () -> (vec DiagnosticBooking) query;
+  getMyDoseLogs: (medicineId: opt text) -> (vec DoseLog) query;
+  getMyExportLogs: () -> (vec ExportLogEntry) query;
+  getMyMedicines: () -> (vec Medicine) query;
+  getMyNotifications: () -> (vec NotificationRecord) query;
+  getMyOrders: () -> (vec Order) query;
+  getMyProfile: () -> (variant {
+                         err: text;
+                         ok: UserProfile;
+                       }) query;
+  getMyReminders: () -> (vec Reminder) query;
+  getMyReports: () -> (vec Report) query;
+  getMySyncedMedicines: () -> (vec SyncedMedicine) query;
+  getMyTimeline: (offset: nat, limit: nat) -> (vec ActivityEventView) query;
+  getPharmacyInventory: () -> (vec InventoryItem) query;
+  getPharmacyOrders: () -> (vec Order) query;
+  getPharmacySyncLogs: () -> (vec PharmacySyncLog) query;
+  getReportData: (reportType: text) -> (ReportData) query;
+  getSystemStats: () ->
+   (record {
+      totalMedicines: nat;
+      totalOrders: nat;
+      totalUsers: nat;
+      usersByRole: vec record {
+                         text;
+                         nat;
+                       };
+    }) query;
+  getUnreadNotificationCount: () -> (nat) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  getUserTelegramLogs: () -> (vec TelegramLog) query;
+  getWorkflowChain: (medicineId: text) -> (WorkflowChain) query;
+  isBotTokenConfigured: () -> (bool) query;
+  isCallerAdmin: () -> (bool) query;
+  logDose: (medicineId: text, takenAt: int, isOnTime: bool) ->
+   (variant {
+      err: text;
+      ok: DoseLog;
+    });
+  logExport: (req: LogExportRequest) -> (ExportLogEntry);
+  lookupPatientByPhone: (phone: text) ->
+   (variant {
+      err: text;
+      ok: record {
+            name: text;
+            "principal": principal;
+          };
+    }) query;
+  markAllNotificationsRead: () -> (nat);
+  markEventRead: (id: text) -> (variant {
+                                  err: text;
+                                  ok;
+                                });
+  markNotificationRead: (notifId: text) -> (variant {
+                                              err: text;
+                                              ok;
+                                            });
+  registerUser: (email: text, name: text, role: UserRole) ->
+   (variant {
+      err: text;
+      ok: UserProfile;
+    });
+  revokeAllConsent: () -> (variant {
+                             err: text;
+                             ok: ConsentRecord;
+                           });
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  searchAuditLog: (params: AuditSearchQuery) -> (vec ActivityEventView) query;
+  sendTestTelegramMessage: (chatId: text) -> (variant {
+                                                err: text;
+                                                ok;
+                                              });
+  setBotToken: (token: text) -> (variant {
+                                   err: text;
+                                   ok;
+                                 });
+  syncMedicineToPatient: (patientPhone: text, medicineName: text,
+   batchNumber: text, expiryDate: int, quantity: nat) ->
+   (variant {
+      err: text;
+      ok: PharmacySyncLog;
+    });
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  updateAppointmentStatus: (id: text, status: text) ->
+   (variant {
+      err: text;
+      ok: Appointment;
+    });
+  updateConsent: (adherenceSharing: bool, prescriptionSharing: bool,
+   diagnosticAccess: bool) -> (variant {
+                                 err: text;
+                                 ok: ConsentRecord;
+                               });
+  updateDiagnosticBookingStatus: (bookingId: text, status: BookingStatus,
+   note: text) -> (variant {
+                     err: text;
+                     ok: DiagnosticBooking;
+                   });
+  updateInventoryItem: (id: text, stockQuantity: nat, minThreshold: nat,
+   maxThreshold: nat, expiryDate: int) ->
+   (variant {
+      err: text;
+      ok: InventoryItem;
+    });
+  updateMedicine: (id: text, name: text, dosage: text, frequency: text,
+   expiryDate: int, category: MedicineCategory) ->
+   (variant {
+      err: text;
+      ok: Medicine;
+    });
+  updateMedicinePrescriptionUrl: (id: text, url: text) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  updateOrderStatus: (id: text, status: OrderStatus) ->
+   (variant {
+      err: text;
+      ok: Order;
+    });
+  updateReminder: (id: text, reminderTime: text, isEnabled: bool,
+   voiceEnabled: bool) -> (variant {
+                             err: text;
+                             ok: Reminder;
+                           });
+  updateTelegramSettings: (chatId: opt text, enabled: opt bool) ->
+   (variant {
+      err: text;
+      ok: UserProfile;
+    });
+  updateUserProfile: (name: opt text, email: opt text, telegramChatId:
+   opt text, telegramEnabled: opt bool) ->
+   (variant {
+      err: text;
+      ok: UserProfile;
+    });
+  updateUserStatus: (userId: text, isActive: bool) ->
+   (variant {
+      err: text;
+      ok;
+    });
+  uploadDiagnosticReport: (bookingId: text, reportUrl: text) ->
+   (variant {
+      err: text;
+      ok: DiagnosticBooking;
+    });
+}

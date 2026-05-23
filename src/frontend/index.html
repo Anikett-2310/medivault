@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>MediVault – Smart Medicine Management</title>
+    <meta name="description" content="MediVault is a premium multi-role healthcare platform for medicine tracking, adherence monitoring, and smart reminders." />
+    <meta property="og:title" content="MediVault – Smart Medicine Management" />
+    <meta property="og:description" content="MediVault is a premium multi-role healthcare platform for medicine tracking, adherence monitoring, and smart reminders." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='100%25' stop-color='%2306b6d4'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='700' font-size='13' fill='white'%3EMV%3C/text%3E%3C/svg%3E" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#6366f1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="MediVault" />
+<link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="apple-touch-startup-image" href="/icons/icon-512.svg" />
+<link rel="dns-prefetch" href="https://icp0.io" />
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js').then(function() {
+            // SW registered
+          }).catch(function() {
+            // SW registration failed
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

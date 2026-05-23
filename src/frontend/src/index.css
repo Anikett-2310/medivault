@@ -1,0 +1,1782 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: Space Grotesk;
+    --font-body: DM Sans;
+    --font-mono: JetBrains Mono;
+    --radius: 0.5rem;
+    --hu-radius: 0.8rem;
+    --hu-card-radius: 1rem;
+
+    --background: 0.95 0.008 240;
+    --foreground: 0.15 0.025 250;
+    --card: 0.98 0.004 240;
+    --card-foreground: 0.15 0.025 250;
+    --popover: 0.98 0.004 240;
+    --popover-foreground: 0.15 0.025 250;
+
+    --primary: 0.4 0.2 260;
+    --primary-foreground: 0.98 0.004 240;
+
+    --secondary: 0.9 0.012 245;
+    --secondary-foreground: 0.25 0.025 250;
+    --muted: 0.92 0.01 242;
+    --muted-foreground: 0.52 0.02 248;
+
+    --accent: 0.65 0.12 210;
+    --accent-foreground: 0.98 0.004 240;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.004 240;
+
+    --border: 0.88 0.012 240;
+    --input: 0.88 0.012 240;
+    --ring: 0.4 0.2 260;
+
+    --chart-1: 0.52 0.2 250;
+    --chart-2: 0.62 0.18 210;
+    --chart-3: 0.55 0.19 280;
+    --chart-4: 0.58 0.17 170;
+    --chart-5: 0.65 0.21 220;
+
+    --sidebar: 0.93 0.01 240;
+    --sidebar-foreground: 0.25 0.025 250;
+    --sidebar-primary: 0.4 0.2 260;
+    --sidebar-primary-foreground: 0.98 0.004 240;
+    --sidebar-accent: 0.9 0.012 245;
+    --sidebar-accent-foreground: 0.25 0.025 250;
+    --sidebar-border: 0.88 0.012 240;
+    --sidebar-ring: 0.52 0.18 250;
+
+    --success: 0.55 0.17 145;
+    --success-foreground: 0.98 0.004 240;
+    --warning: 0.65 0.18 75;
+    --warning-foreground: 0.15 0.025 250;
+    --glass-blur: 10px;
+    --glass-opacity: 0.08;
+
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+
+    --glass-border-opacity: 0.12;
+    --glass-glow: 0 1px 8px rgba(100, 120, 180, 0.04);
+    --card-subtle: 0.96 0.006 240;
+    --sidebar-background: 0.93 0.01 240;
+    --status-success: 0.55 0.17 145;
+    --status-warning: 0.65 0.18 75;
+    --status-info: 0.55 0.18 220;
+    --toggle-bg: 0.88 0.012 240;
+
+    --color-bg-base: 0.91 0.008 245;
+    --color-bg-surface: 0.95 0.005 245;
+    --color-bg-elevated: 0.98 0.003 240;
+    --color-bg-overlay: oklch(0.14 0.015 245 / 0.45);
+    --color-bg-muted: 0.91 0.012 242;
+    --color-bg-sidebar: 0.93 0.01 240;
+    --color-text-primary: 0.14 0.015 245;
+    --color-text-secondary: 0.32 0.015 245;
+    --color-text-tertiary: 0.5 0.012 245;
+    --color-text-inverse: 0.98 0.004 240;
+    --color-text-accent: 0.48 0.22 265;
+    --color-border-base: 0.72 0.008 245 / 0.7;
+    --color-border-muted: 0.88 0.01 242;
+    --color-border-strong: 0.58 0.01 245 / 0.9;
+    --color-border-focus: 0.68 0.18 200;
+    --color-brand-primary: 0.4 0.2 260;
+    --color-brand-secondary: 0.28 0.14 255;
+    --color-accent-teal: 0.65 0.26 185;
+    --color-accent-amber: 0.72 0.26 75;
+    --color-accent-cyan: 0.68 0.24 200;
+    --color-status-success: 0.55 0.17 155;
+    --color-status-warning: 0.65 0.18 75;
+    --color-status-danger: 0.55 0.22 20;
+    --color-status-info: 0.55 0.14 235;
+    --color-status-neutral: 0.6 0.008 240;
+    --color-role-patient: 0.65 0.22 185;
+    --color-role-pharmacy: 0.72 0.22 75;
+    --color-role-hospital: 0.58 0.24 245;
+    --color-role-diagnostic: 0.58 0.26 295;
+    --color-role-admin: 0.52 0.26 15;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --line-height-tight: 1.25;
+    --line-height-snug: 1.375;
+    --line-height-base: 1.5;
+    --line-height-relaxed: 1.625;
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-normal: 0em;
+    --letter-spacing-wide: 0.04em;
+    --letter-spacing-wider: 0.08em;
+    --font-numeric: tabular-nums;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --border-width-thin: 1px;
+    --border-width-base: 1px;
+    --border-width-thick: 2px;
+    --radius-none: 0;
+    --radius-sm: 2px;
+    --radius-base: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-xl: 12px;
+    --radius-full: 9999px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-base: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.18);
+    --elevation-0: 0;
+    --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.08);
+    --elevation-3: 0 10px 15px rgba(0, 0, 0, 0.12), 0 4px 6px
+      rgba(0, 0, 0, 0.08);
+    --elevation-4: 0 12px 32px oklch(0 0 0 / 0.15);
+    --elevation-5: 0 16px 48px oklch(0 0 0 / 0.18);
+    --opacity-disabled: 0.38;
+    --opacity-placeholder: 0.5;
+    --opacity-muted: 0.6;
+    --opacity-secondary: 0.7;
+    --opacity-soft: 0.85;
+    --opacity-full: 1;
+    --duration-instant: 0ms;
+    --duration-fast: 100ms;
+    --duration-base: 200ms;
+    --duration-slow: 300ms;
+    --duration-slower: 400ms;
+    --duration-sluggish: 600ms;
+    --ease-operational: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-enter: cubic-bezier(0.0, 0.0, 0.2, 1);
+    --ease-exit: cubic-bezier(0.4, 0.0, 1, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --color-bg-sunken: 0.88 0.015 240;
+    --color-text-muted: 0.58 0.006 240;
+    --color-border-subtle: 0.82 0.005 245 / 0.5;
+    --color-grid-line: 0.78 0.01 242 / 0.4;
+    --gradient-surface: linear-gradient(
+      180deg,
+      var(--color-bg-base) 0%,
+      var(--color-bg-sunken) 100%
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      var(--color-bg-base) 0%,
+      oklch(0.88 0.015 245) 50%,
+      var(--color-bg-surface) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      var(--color-bg-surface) 0%,
+      oklch(0.96 0.007 245) 100%
+    );
+    --gradient-section-fade: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--color-bg-sunken) 100%
+    );
+
+    --color-role-admin-accent: 0.55 0.24 25;
+    --color-text-on-accent: oklch(0.98 0.004 240);
+
+    --color-bg-highlight: 0.96 0.015 255;
+    --color-accent-indigo: 0.48 0.28 265;
+    --color-accent-crimson: 0.52 0.28 15;
+    --color-role-patient-surface: 0.94 0.05 185;
+    --color-role-pharmacy-surface: 0.94 0.05 75;
+    --color-role-hospital-surface: 0.93 0.06 245;
+    --color-role-diagnostic-surface: 0.93 0.06 295;
+    --color-role-admin-surface: 0.92 0.06 15;
+
+    --color-bg-card: 0.97 0.004 240;
+    --color-bg-active: 0.96 0.012 245;
+
+    --btn-glow-bg: rgba(64, 180, 255, 0.08);
+    --btn-glow-border: rgba(64, 180, 255, 0.2);
+    --btn-overlay-dark: rgba(0, 0, 0, 0.5);
+  }
+
+  .dark {
+    --background: 0.08 0.025 250;
+    --foreground: 0.96 0.006 250;
+    --card: 0.12 0.022 250;
+    --card-foreground: 0.96 0.006 250;
+    --popover: 0.12 0.022 250;
+    --popover-foreground: 0.96 0.006 250;
+
+    --primary: 0.5 0.18 260;
+    --primary-foreground: 0.08 0.025 250;
+
+    --secondary: 0.18 0.035 250;
+    --secondary-foreground: 0.82 0.015 250;
+    --muted: 0.15 0.028 250;
+    --muted-foreground: 0.52 0.018 248;
+
+    --accent: 0.7 0.18 210;
+    --accent-foreground: 0.08 0.025 250;
+
+    --destructive: 0.55 0.25 20;
+    --destructive-foreground: 0.96 0.006 250;
+
+    --border: 0.25 0.035 250;
+    --input: 0.22 0.03 250;
+    --ring: 0.5 0.18 260;
+
+    --chart-1: 0.72 0.24 250;
+    --chart-2: 0.7 0.22 210;
+    --chart-3: 0.68 0.21 280;
+    --chart-4: 0.72 0.2 170;
+    --chart-5: 0.76 0.23 220;
+
+    --sidebar: 0.06 0.02 250;
+    --sidebar-foreground: 0.82 0.015 250;
+    --sidebar-primary: 0.5 0.18 260;
+    --sidebar-primary-foreground: 0.08 0.025 250;
+    --sidebar-accent: 0.15 0.03 250;
+    --sidebar-accent-foreground: 0.82 0.015 250;
+    --sidebar-border: 0.22 0.03 250;
+    --sidebar-ring: 0.65 0.2 250;
+
+    --font-display: Space Grotesk;
+    --font-body: DM Sans;
+    --font-mono: JetBrains Mono;
+
+    --success: 0.62 0.2 145;
+    --success-foreground: 0.08 0.025 250;
+    --warning: 0.72 0.22 75;
+    --warning-foreground: 0.08 0.025 250;
+    --glass-blur: 20px;
+    --glass-opacity: 0.08;
+
+    --glass-border-opacity: 0.15;
+    --glass-glow: 0 4px 24px rgba(80, 120, 255, 0.12);
+    --card-subtle: 0.1 0.02 250;
+    --sidebar-background: 0.06 0.02 250;
+    --status-success: 0.62 0.2 145;
+    --status-warning: 0.72 0.22 75;
+    --status-info: 0.68 0.22 220;
+    --toggle-bg: 0.18 0.035 250;
+
+    --color-bg-base: 0.07 0.012 245;
+    --color-bg-surface: 0.11 0.01 245;
+    --color-bg-elevated: 0.16 0.008 245;
+    --color-bg-overlay: oklch(0.04 0.01 245 / 0.72);
+    --color-bg-muted: 0.12 0.02 260;
+    --color-bg-sidebar: 0.07 0.025 265;
+    --color-text-primary: 0.96 0.005 240;
+    --color-text-secondary: 0.8 0.01 240;
+    --color-text-tertiary: 0.65 0.008 240;
+    --color-text-inverse: 0.08 0.025 250;
+    --color-text-accent: 0.75 0.18 200;
+    --color-border-base: 0.32 0.01 245 / 0.6;
+    --color-border-muted: 0.22 0.016 250;
+    --color-border-strong: 0.45 0.012 245 / 0.8;
+    --color-border-focus: 0.75 0.18 200;
+    --color-brand-primary: 0.5 0.22 260;
+    --color-brand-secondary: 0.35 0.12 255;
+    --color-accent-teal: 0.74 0.26 185;
+    --color-accent-amber: 0.78 0.26 75;
+    --color-accent-cyan: 0.75 0.24 200;
+    --color-status-success: 0.62 0.14 155;
+    --color-status-warning: 0.72 0.14 70;
+    --color-status-danger: 0.6 0.2 20;
+    --color-status-info: 0.65 0.1 235;
+    --color-status-neutral: 0.5 0.008 240;
+    --color-role-patient: 0.74 0.26 185;
+    --color-role-pharmacy: 0.8 0.25 75;
+    --color-role-hospital: 0.7 0.27 245;
+    --color-role-diagnostic: 0.72 0.28 295;
+    --color-role-admin: 0.66 0.28 15;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.28);
+    --shadow-base: 0 4px 6px rgba(0, 0, 0, 0.42), 0 2px 4px rgba(0, 0, 0, 0.32);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.48), 0 2px 4px rgba(0, 0, 0, 0.35);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.52), 0 4px 6px rgba(0, 0, 0, 0.38);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.55);
+    --elevation-0: 0;
+    --elevation-1: 0 1px 3px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.28);
+    --elevation-2: 0 4px 6px rgba(0, 0, 0, 0.42), 0 2px 4px rgba(0, 0, 0, 0.32);
+    --elevation-3: 0 10px 15px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.35);
+    --elevation-4: 0 12px 32px oklch(0 0 0 / 0.45);
+    --elevation-5: 0 16px 48px oklch(0 0 0 / 0.5);
+
+    --color-bg-sunken: 0.06 0.032 260;
+    --color-text-muted: 0.55 0.004 240;
+    --color-border-subtle: 0.22 0.008 245 / 0.4;
+    --color-grid-line: 0.3 0.015 260 / 0.35;
+    --gradient-surface: linear-gradient(
+      180deg,
+      var(--color-bg-base) 0%,
+      var(--color-bg-sunken) 100%
+    );
+    --gradient-hero: linear-gradient(
+      135deg,
+      var(--color-bg-base) 0%,
+      oklch(0.1 0.025 250) 50%,
+      var(--color-bg-muted) 100%
+    );
+    --gradient-card: linear-gradient(
+      135deg,
+      var(--color-bg-surface) 0%,
+      oklch(0.16 0.02 252) 100%
+    );
+    --gradient-section-fade: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--color-bg-sunken) 100%
+    );
+
+    --color-role-admin-accent: 0.65 0.26 25;
+
+    --color-text-on-accent: oklch(0.98 0.004 240);
+
+    --color-bg-highlight: 0.28 0.04 260;
+    --color-accent-indigo: 0.62 0.28 265;
+    --color-accent-crimson: 0.62 0.28 15;
+    --color-role-patient-surface: 0.15 0.04 185;
+    --color-role-pharmacy-surface: 0.15 0.04 75;
+    --color-role-hospital-surface: 0.16 0.05 245;
+    --color-role-diagnostic-surface: 0.16 0.05 295;
+    --color-role-admin-surface: 0.14 0.05 15;
+
+    --color-bg-card: 0.19 0.006 245;
+    --color-bg-active: 0.22 0.008 250;
+
+    --btn-glow-bg: rgba(64, 180, 255, 0.15);
+    --btn-glow-border: rgba(64, 180, 255, 0.35);
+    --btn-overlay-dark: rgba(0, 0, 0, 0.7);
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(
+        ellipse at 20% 20%,
+        oklch(0.85 0.04 185 / 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 80%,
+        oklch(0.82 0.04 245 / 0.06) 0%,
+        transparent 50%
+      );
+  }
+
+  .dark body::before {
+    background: radial-gradient(
+        ellipse at 20% 20%,
+        oklch(0.25 0.06 185 / 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 80%,
+        oklch(0.2 0.06 245 / 0.06) 0%,
+        transparent 50%
+      );
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift {
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: 0 0 8px currentColor;
+    }
+    50% {
+      opacity: 0.7;
+      box-shadow: 0 0 20px currentColor;
+    }
+  }
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .glass-card {
+    backdrop-filter: blur(var(--glass-blur));
+    background: oklch(from var(--card) l c h / var(--glass-opacity));
+    border: 1px solid
+      oklch(from var(--border) l c h / var(--glass-border-opacity));
+    box-shadow: var(--glass-glow);
+  }
+
+  .gradient-brand {
+    background: linear-gradient(
+      135deg,
+      oklch(0.68 0.22 225),
+      oklch(0.62 0.26 275)
+    );
+  }
+
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--color-accent-teal)),
+      oklch(var(--color-role-hospital))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-hero {
+    background: radial-gradient(
+        ellipse 80% 60% at 50% -10%,
+        oklch(0.35 0.18 240 / 0.6) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 60%,
+        oklch(0.35 0.2 270 / 0.3) 0%,
+        transparent 50%
+      ), oklch(0.08 0.03 240);
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.06) 50%,
+      transparent 100%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .font-display {
+    font-family: var(--font-display), sans-serif;
+  }
+
+  .font-body {
+    font-family: var(--font-body), sans-serif;
+  }
+
+  .font-mono {
+    font-family: var(--font-mono), monospace;
+  }
+
+  .route-transition {
+    animation: routeEnter 200ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes routeEnter {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .pt-safe {
+    padding-top: max(env(safe-area-inset-top, 0px), 1rem);
+  }
+
+  .pb-safe {
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 1rem);
+  }
+
+  .mb-safe {
+    margin-bottom: max(env(safe-area-inset-bottom, 0px), 1rem);
+  }
+
+  .panel-depth-1 {
+    background: var(--color-bg-surface);
+    border: 1px solid var(--color-border-subtle);
+    box-shadow: 0 1px 3px var(--shadow-sm, oklch(0.1 0.01 245 / 0.06));
+  }
+
+  .panel-depth-2 {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border-base);
+    box-shadow: 0 2px 8px var(--shadow-base, oklch(0.1 0.01 245 / 0.1));
+  }
+
+  .panel-depth-3 {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-strong);
+    box-shadow: 0 4px 16px var(--shadow-md, oklch(0.1 0.01 245 / 0.14));
+  }
+
+  .panel-focus {
+    background: var(--color-bg-active);
+    border: 1px solid var(--color-border-focus);
+  }
+
+  .metric-value-primary {
+    color: var(--color-text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .metric-label {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .metric-delta-positive {
+    color: var(--color-status-success);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .metric-delta-negative {
+    color: var(--color-status-danger);
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .overlay-backdrop {
+    background: var(--color-bg-overlay);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .alert-banner-warning {
+    background: oklch(from var(--color-status-warning) l c h / 0.15);
+    border: 1px solid oklch(from var(--color-status-warning) l c h / 0.4);
+    color: var(--color-status-warning);
+  }
+
+  .alert-banner-danger {
+    background: oklch(from var(--color-status-danger) l c h / 0.15);
+    border: 1px solid oklch(from var(--color-status-danger) l c h / 0.4);
+    color: var(--color-status-danger);
+  }
+
+  .alert-banner-success {
+    background: oklch(from var(--color-status-success) l c h / 0.15);
+    border: 1px solid oklch(from var(--color-status-success) l c h / 0.4);
+    color: var(--color-status-success);
+  }
+
+  .badge-success {
+    background: oklch(from var(--color-status-success) l c h / 0.15);
+    color: var(--color-status-success);
+    border: 1px solid oklch(from var(--color-status-success) l c h / 0.3);
+  }
+
+  .badge-warning {
+    background: oklch(from var(--color-status-warning) l c h / 0.15);
+    color: var(--color-status-warning);
+    border: 1px solid oklch(from var(--color-status-warning) l c h / 0.3);
+  }
+
+  .badge-danger {
+    background: oklch(from var(--color-status-danger) l c h / 0.15);
+    color: var(--color-status-danger);
+    border: 1px solid oklch(from var(--color-status-danger) l c h / 0.3);
+  }
+
+  .badge-info {
+    background: oklch(from var(--color-accent-primary) l c h / 0.15);
+    color: var(--color-accent-primary);
+    border: 1px solid oklch(from var(--color-accent-primary) l c h / 0.3);
+  }
+
+  .badge-neutral {
+    background: var(--color-bg-muted);
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border-base);
+  }
+
+  .badge-teal {
+    background-color: color-mix(
+      in oklch,
+      var(--color-role-patient) 15%,
+      transparent
+    );
+    color: var(--color-role-patient);
+    border: 1px solid
+      color-mix(in oklch, var(--color-role-patient) 25%, transparent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .badge-blue {
+    background-color: color-mix(
+      in oklch,
+      var(--color-role-hospital) 15%,
+      transparent
+    );
+    color: var(--color-role-hospital);
+    border: 1px solid
+      color-mix(in oklch, var(--color-role-hospital) 25%, transparent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .badge-purple {
+    background-color: color-mix(
+      in oklch,
+      var(--color-role-diagnostic) 15%,
+      transparent
+    );
+    color: var(--color-role-diagnostic);
+    border: 1px solid
+      color-mix(in oklch, var(--color-role-diagnostic) 25%, transparent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .badge-amber {
+    background-color: color-mix(
+      in oklch,
+      var(--color-role-pharmacy) 15%,
+      transparent
+    );
+    color: var(--color-role-pharmacy);
+    border: 1px solid
+      color-mix(in oklch, var(--color-role-pharmacy) 25%, transparent);
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+/* Export Template Accent Classes — semantic role-based token replacements */
+@layer utilities {
+  /* Left accent rail */
+  .export-template-rail-teal {
+    background: oklch(var(--color-role-patient));
+  }
+  .export-template-rail-amber {
+    background: oklch(var(--color-role-pharmacy));
+  }
+  .export-template-rail-blue {
+    background: oklch(var(--color-role-hospital));
+  }
+  .export-template-rail-purple {
+    background: oklch(var(--color-role-diagnostic));
+  }
+  .export-template-rail-red {
+    background: oklch(var(--color-role-admin));
+  }
+
+  /* Icon container surface + border */
+  .export-template-icon-teal {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-patient)) 15%,
+      transparent
+    );
+    border: 1px solid
+      color-mix(in oklch, oklch(var(--color-role-patient)) 30%, transparent);
+  }
+  .export-template-icon-amber {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-pharmacy)) 15%,
+      transparent
+    );
+    border: 1px solid
+      color-mix(in oklch, oklch(var(--color-role-pharmacy)) 30%, transparent);
+  }
+  .export-template-icon-blue {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-hospital)) 15%,
+      transparent
+    );
+    border: 1px solid
+      color-mix(in oklch, oklch(var(--color-role-hospital)) 30%, transparent);
+  }
+  .export-template-icon-purple {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-diagnostic)) 15%,
+      transparent
+    );
+    border: 1px solid
+      color-mix(in oklch, oklch(var(--color-role-diagnostic)) 30%, transparent);
+  }
+  .export-template-icon-red {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-admin)) 15%,
+      transparent
+    );
+    border: 1px solid
+      color-mix(in oklch, oklch(var(--color-role-admin)) 30%, transparent);
+  }
+
+  /* Icon color text */
+  .export-template-text-teal {
+    color: oklch(var(--color-role-patient));
+  }
+  .export-template-text-amber {
+    color: oklch(var(--color-role-pharmacy));
+  }
+  .export-template-text-blue {
+    color: oklch(var(--color-role-hospital));
+  }
+  .export-template-text-purple {
+    color: oklch(var(--color-role-diagnostic));
+  }
+  .export-template-text-red {
+    color: oklch(var(--color-role-admin));
+  }
+
+  /* CTA button surface */
+  .export-template-cta-teal {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-patient)) 10%,
+      transparent
+    );
+    border-color: color-mix(
+      in oklch,
+      oklch(var(--color-role-patient)) 25%,
+      transparent
+    );
+    color: oklch(var(--color-role-patient));
+  }
+  .export-template-cta-teal:hover {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-patient)) 18%,
+      transparent
+    );
+  }
+  .export-template-cta-amber {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-pharmacy)) 10%,
+      transparent
+    );
+    border-color: color-mix(
+      in oklch,
+      oklch(var(--color-role-pharmacy)) 25%,
+      transparent
+    );
+    color: oklch(var(--color-role-pharmacy));
+  }
+  .export-template-cta-amber:hover {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-pharmacy)) 18%,
+      transparent
+    );
+  }
+  .export-template-cta-blue {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-hospital)) 10%,
+      transparent
+    );
+    border-color: color-mix(
+      in oklch,
+      oklch(var(--color-role-hospital)) 25%,
+      transparent
+    );
+    color: oklch(var(--color-role-hospital));
+  }
+  .export-template-cta-blue:hover {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-hospital)) 18%,
+      transparent
+    );
+  }
+  .export-template-cta-purple {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-diagnostic)) 10%,
+      transparent
+    );
+    border-color: color-mix(
+      in oklch,
+      oklch(var(--color-role-diagnostic)) 25%,
+      transparent
+    );
+    color: oklch(var(--color-role-diagnostic));
+  }
+  .export-template-cta-purple:hover {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-diagnostic)) 18%,
+      transparent
+    );
+  }
+  .export-template-cta-red {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-admin)) 10%,
+      transparent
+    );
+    border-color: color-mix(
+      in oklch,
+      oklch(var(--color-role-admin)) 25%,
+      transparent
+    );
+    color: oklch(var(--color-role-admin));
+  }
+  .export-template-cta-red:hover {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-admin)) 18%,
+      transparent
+    );
+  }
+
+  /* Scheduled card icon background (lighter, no border) */
+  .export-template-sched-teal {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-patient)) 10%,
+      transparent
+    );
+  }
+  .export-template-sched-amber {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-pharmacy)) 10%,
+      transparent
+    );
+  }
+  .export-template-sched-blue {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-hospital)) 10%,
+      transparent
+    );
+  }
+  .export-template-sched-purple {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-diagnostic)) 10%,
+      transparent
+    );
+  }
+  .export-template-sched-red {
+    background: color-mix(
+      in oklch,
+      oklch(var(--color-role-admin)) 10%,
+      transparent
+    );
+  }
+}
+
+/* PWA Mobile Enhancements */
+
+/* Safe area inset support for devices with notches */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Minimum 48px touch targets for healthcare-grade usability */
+.touch-target {
+  min-height: 48px;
+  min-width: 48px;
+}
+
+/* Smooth page transitions for app-like feel */
+.page-enter {
+  animation: pageEnter 200ms ease-out forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* PWA standalone mode — hide browser chrome artifacts */
+@media all and (display-mode: standalone) {
+  body {
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-content {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+button,
+a,
+[role="button"],
+[role="link"],
+label,
+select,
+summary {
+  touch-action: manipulation;
+}
+
+/* Prevent text selection on tap in app-like UI */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Smooth momentum scrolling */
+.smooth-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* =============================================================
+   PRINT MODE — Healthcare-style clean print layout
+   Hides navigation, controls, and resets glassmorphism effects
+   ============================================================= */
+@media print {
+  /* Hide sidebar navigation */
+  .sidebar,
+  nav,
+  [data-role="nav"],
+  aside {
+    display: none !important;
+  }
+
+  /* Hide top header bar */
+  header {
+    display: none !important;
+  }
+
+  /* Hide filter controls and export buttons */
+  [data-ocid*="filter"],
+  [data-ocid*="export_button"],
+  [data-ocid*="export.button"],
+  .export-controls {
+    display: none !important;
+  }
+
+  /* Reset glassmorphism for clean white print */
+  body,
+  .glass,
+  .glass-card,
+  [class*="backdrop-blur"],
+  [class*="bg-white/"] {
+    background: white !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    color: black !important;
+  }
+
+  /* Clean table borders */
+  table,
+  th,
+  td {
+    border: 1px solid #ccc !important;
+  }
+
+  thead {
+    background: #f0f4f8 !important;
+  }
+
+  /* Prevent page breaks inside rows */
+  tr {
+    page-break-inside: avoid;
+  }
+
+  /* Page margin */
+  @page {
+    margin: 1.5cm;
+  }
+
+  /* Content fills full width */
+  main,
+  .main-content,
+  [role="main"] {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+/* === MediVault UI Components CSS === */
+
+/* Theme toggle button — login page and landing page */
+.theme-toggle-floating {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 10;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-base);
+  border-radius: 9999px;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.theme-toggle-floating:hover {
+  background: var(--color-bg-muted);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-muted);
+}
+.pearl-button {
+  --white: #e6f3ff;
+  --bg: #0a1929;
+  --radius: 100px;
+}
+
+.glass-card-light {
+  backdrop-filter: blur(8px);
+  background: oklch(from var(--card) l c h / 0.85);
+  border: 1px solid oklch(from var(--border) l c h / 0.5);
+  box-shadow: 0 1px 8px rgba(100, 120, 180, 0.04);
+  transition: all 0.2s ease;
+}
+
+.bg-grid-technical {
+  background-image: linear-gradient(
+      to right,
+      var(--color-grid-line) 1px,
+      transparent 1px
+    ), linear-gradient(to bottom, var(--color-grid-line) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+.bg-blueprint {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='blueprint' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='currentColor' opacity='0.05'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23blueprint)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+.card-operational {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-base);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text-primary);
+  padding: 1rem;
+  border-left: 4px solid transparent;
+}
+
+.card-clinical {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text-primary);
+  padding: 1rem;
+}
+
+.panel-blueprint {
+  background: var(--color-bg-sunken);
+  border: 1px solid var(--color-border-muted);
+  border-radius: 0.375rem;
+  color: var(--color-text-secondary);
+  padding: 1rem;
+}
+
+.status-rail {
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.timeline-node {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border-base, var(--border));
+  background-color: var(--color-brand-primary, var(--primary));
+}
+
+.timeline-connector {
+  position: absolute;
+  left: 0.375rem;
+  top: 100%;
+  width: 2px;
+  height: 3rem;
+  background-color: var(--color-border-muted, var(--border));
+}
+
+.text-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.heading-operational {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-text-primary, var(--foreground));
+}
+
+.label-clinical {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-secondary, var(--muted-foreground));
+}
+
+.bg-overlay {
+  background-color: var(--color-bg-overlay);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.border-base {
+  border: 1px solid var(--color-border-base);
+}
+
+.border-subtle {
+  border: 1px solid var(--color-border-subtle);
+}
+.shadow-operational {
+  box-shadow: 0 2px 8px rgba(30, 50, 100, 0.15), 0 1px 3px
+    rgba(30, 50, 100, 0.1);
+}
+
+.shadow-blueprint {
+  box-shadow: 0 0 0 1px rgba(99, 130, 190, 0.15), 0 4px 12px
+    rgba(30, 50, 100, 0.12);
+}
+
+.dark .glow-teal {
+  box-shadow: 0 0 20px rgba(0, 180, 160, 0.12);
+}
+
+.dark .glow-indigo {
+  box-shadow: 0 0 20px rgba(100, 120, 220, 0.15);
+}
+
+.surface-hierarchy {
+  background: linear-gradient(
+    180deg,
+    oklch(var(--color-bg-surface)) 0%,
+    oklch(var(--color-bg-sunken)) 100%
+  );
+  box-shadow: inset 0 1px 3px rgba(100, 120, 180, 0.04);
+}
+
+.section-alt {
+  background: oklch(var(--color-bg-sunken));
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-separator {
+  border-bottom: 1px solid oklch(var(--color-border-muted));
+  padding-bottom: 1.5rem;
+}
+
+.blueprint-separator {
+  border-bottom: 1px solid oklch(var(--color-brand-primary) / 0.15);
+  padding-bottom: 1.5rem;
+}
+
+.metric-emphasis {
+  color: oklch(var(--color-text-primary));
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.analytics-panel {
+  background: oklch(var(--color-bg-surface));
+  border-left: 1px solid oklch(var(--color-brand-primary) / 0.06);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem;
+}
+
+.card-analytics {
+  background: oklch(var(--color-bg-sunken));
+  border: 1px solid oklch(var(--color-brand-primary) / 0.12);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem;
+}
+
+.role-patient {
+  color: var(--color-role-patient);
+  font-weight: 600;
+}
+
+.role-pharmacy {
+  color: var(--color-role-pharmacy);
+  font-weight: 600;
+}
+
+.role-hospital {
+  color: var(--color-role-hospital);
+  font-weight: 600;
+}
+
+.role-diagnostic {
+  color: var(--color-role-diagnostic);
+  font-weight: 600;
+}
+
+.role-admin {
+  color: var(--color-role-admin);
+  font-weight: 600;
+}
+
+.role-patient-bg {
+  background-color: oklch(var(--color-role-patient-surface));
+  border: 1px solid var(--color-role-patient);
+  border-left: 3px solid var(--color-role-patient);
+}
+
+.role-pharmacy-bg {
+  background-color: oklch(var(--color-role-pharmacy-surface));
+  border: 1px solid var(--color-role-pharmacy);
+  border-left: 3px solid var(--color-role-pharmacy);
+}
+
+.role-hospital-bg {
+  background-color: oklch(var(--color-role-hospital-surface));
+  border: 1px solid var(--color-role-hospital);
+  border-left: 3px solid var(--color-role-hospital);
+}
+
+.role-diagnostic-bg {
+  background-color: oklch(var(--color-role-diagnostic-surface));
+  border: 1px solid var(--color-role-diagnostic);
+  border-left: 3px solid var(--color-role-diagnostic);
+}
+
+.role-admin-bg {
+  background-color: oklch(var(--color-role-admin-surface));
+  border: 1px solid var(--color-role-admin);
+  border-left: 3px solid var(--color-role-admin);
+}
+
+.metric-patient {
+  color: var(--color-role-patient);
+  font-weight: 700;
+}
+
+.metric-pharmacy {
+  color: var(--color-role-pharmacy);
+  font-weight: 700;
+}
+
+.metric-hospital {
+  color: var(--color-role-hospital);
+  font-weight: 700;
+}
+
+.metric-diagnostic {
+  color: var(--color-role-diagnostic);
+  font-weight: 700;
+}
+
+.metric-admin {
+  color: var(--color-role-admin);
+  font-weight: 700;
+}
+
+.panel-patient {
+  border-left: 3px solid var(--color-role-patient);
+}
+
+.panel-pharmacy {
+  border-left: 3px solid var(--color-role-pharmacy);
+}
+
+.panel-hospital {
+  border-left: 3px solid var(--color-role-hospital);
+}
+
+.panel-diagnostic {
+  border-left: 3px solid var(--color-role-diagnostic);
+}
+
+.panel-admin {
+  border-left: 3px solid var(--color-role-admin);
+}
+
+.shadow-card {
+  box-shadow: 0 1px 3px oklch(0 0 0 / 0.08), 0 1px 2px oklch(0 0 0 / 0.04);
+}
+
+.shadow-elevated {
+  box-shadow: 0 4px 12px oklch(0 0 0 / 0.1), 0 2px 4px oklch(0 0 0 / 0.06);
+}
+
+.shadow-panel {
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.08), inset 0 1px 0 oklch(1 0 0 / 0.5);
+}
+
+.dark .shadow-card {
+  box-shadow: 0 1px 3px oklch(0 0 0 / 0.35), 0 1px 2px oklch(0 0 0 / 0.28);
+}
+
+.dark .shadow-elevated {
+  box-shadow: 0 4px 12px oklch(0 0 0 / 0.48), 0 2px 4px oklch(0 0 0 / 0.32);
+}
+
+.dark .shadow-panel {
+  box-shadow: 0 2px 8px oklch(0 0 0 / 0.4), inset 0 1px 0
+    oklch(0.3 0.02 250 / 0.3);
+}
+
+.sidebar-nav-item {
+  @apply rounded-md;
+  color: var(--color-text-secondary);
+  border-left: 3px solid transparent;
+}
+.sidebar-nav-item:hover {
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-muted);
+}
+
+.status-indicator-success {
+  background: oklch(from oklch(var(--color-status-success)) l c h / 0.15);
+  border: 1px solid oklch(from oklch(var(--color-status-success)) l c h / 0.3);
+}
+
+.status-indicator-danger {
+  background: oklch(from oklch(var(--color-status-danger)) l c h / 0.15);
+  border: 1px solid oklch(from oklch(var(--color-status-danger)) l c h / 0.3);
+}
+
+/* ─── Workflow Intelligence: role node cards ─────────────────────────────── */
+.role-node-patient {
+  border-left: 3px solid
+    color-mix(in oklch, var(--color-role-patient) 60%, transparent);
+  background: color-mix(
+    in oklch,
+    var(--color-role-patient) 8%,
+    var(--color-bg-elevated)
+  );
+}
+.role-node-pharmacy {
+  border-left: 3px solid
+    color-mix(in oklch, var(--color-role-pharmacy) 60%, transparent);
+  background: color-mix(
+    in oklch,
+    var(--color-role-pharmacy) 8%,
+    var(--color-bg-elevated)
+  );
+}
+.role-node-hospital {
+  border-left: 3px solid
+    color-mix(in oklch, var(--color-role-hospital) 60%, transparent);
+  background: color-mix(
+    in oklch,
+    var(--color-role-hospital) 8%,
+    var(--color-bg-elevated)
+  );
+}
+.role-node-lab {
+  border-left: 3px solid
+    color-mix(in oklch, var(--color-role-diagnostic) 60%, transparent);
+  background: color-mix(
+    in oklch,
+    var(--color-role-diagnostic) 8%,
+    var(--color-bg-elevated)
+  );
+}
+.role-node-admin {
+  border-left: 3px solid
+    color-mix(in oklch, var(--color-role-admin) 60%, transparent);
+  background: color-mix(
+    in oklch,
+    var(--color-role-admin) 8%,
+    var(--color-bg-elevated)
+  );
+}
+
+/* ─── Workflow Intelligence: role icon backgrounds ───────────────────────── */
+.role-icon-bg-patient {
+  background: color-mix(
+    in oklch,
+    var(--color-role-patient) 20%,
+    var(--color-bg-elevated)
+  );
+  color: var(--color-role-patient);
+}
+.role-icon-bg-pharmacy {
+  background: color-mix(
+    in oklch,
+    var(--color-role-pharmacy) 20%,
+    var(--color-bg-elevated)
+  );
+  color: var(--color-role-pharmacy);
+}
+.role-icon-bg-hospital {
+  background: color-mix(
+    in oklch,
+    var(--color-role-hospital) 20%,
+    var(--color-bg-elevated)
+  );
+  color: var(--color-role-hospital);
+}
+.role-icon-bg-lab {
+  background: color-mix(
+    in oklch,
+    var(--color-role-diagnostic) 20%,
+    var(--color-bg-elevated)
+  );
+  color: var(--color-role-diagnostic);
+}
+.role-icon-bg-admin {
+  background: color-mix(
+    in oklch,
+    var(--color-role-admin) 20%,
+    var(--color-bg-elevated)
+  );
+  color: var(--color-role-admin);
+}
+
+/* ─── Workflow Intelligence: connector edges ─────────────────────────────── */
+.workflow-edge-line {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border-base),
+    transparent
+  );
+  height: 1px;
+}
+.workflow-edge-pharmacy-patient {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-role-pharmacy) 40%, transparent),
+    color-mix(in oklch, var(--color-role-patient) 40%, transparent)
+  );
+  height: 2px;
+  border-radius: 1px;
+}
+.workflow-edge-hospital-patient {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-role-hospital) 40%, transparent),
+    color-mix(in oklch, var(--color-role-patient) 40%, transparent)
+  );
+  height: 2px;
+  border-radius: 1px;
+}
+.workflow-edge-lab-hospital {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-role-lab) 40%, transparent),
+    color-mix(in oklch, var(--color-role-hospital) 40%, transparent)
+  );
+  height: 2px;
+  border-radius: 1px;
+}
+.workflow-edge-patient-hospital {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--color-role-patient) 40%, transparent),
+    color-mix(in oklch, var(--color-role-hospital) 40%, transparent)
+  );
+  height: 2px;
+  border-radius: 1px;
+}
+.workflow-arrow-patient {
+  color: var(--color-role-patient);
+}
+.workflow-arrow-pharmacy {
+  color: var(--color-role-pharmacy);
+}
+.workflow-arrow-hospital {
+  color: var(--color-role-hospital);
+}
+.workflow-arrow-lab {
+  color: var(--color-role-lab);
+}
+.workflow-arrow-admin {
+  color: var(--color-role-admin);
+}
+
+/* ─── Blueprint grid background pattern ─────────────────────────────────── */
+.blueprint-grid {
+  background-image: linear-gradient(
+      color-mix(in oklch, var(--color-border-base) 30%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklch, var(--color-border-base) 30%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 32px 32px;
+}
+
+/* ─── Red / admin badge variant ─────────────────────────────────────────── */
+.badge-red {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-width: 1px;
+  border-style: solid;
+  background: color-mix(in oklch, var(--color-role-admin) 12%, transparent);
+  color: var(--color-role-admin);
+  border-color: color-mix(in oklch, var(--color-role-admin) 30%, transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRESENTATION MODE
+   Activated via .presentation-mode on <html>. Enhances legibility for
+   projector / large-display demos without touching the base design system.
+   All overrides use CSS custom properties — no hardcoded colors.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Base readability enhancements ─────────────────────────────────────── */
+.presentation-mode {
+  /* Slightly looser line height for projector legibility */
+  line-height: 1.65;
+
+  /* Subtle role-accent top stripe on the main content wrapper.
+     Components render inside this scope; the 3px border-top on
+     [data-main-content] is targeted below. */
+}
+
+/* ─── Metric / KPI value enlargement ────────────────────────────────────── */
+.presentation-mode [data-metric],
+.presentation-mode .metric-value {
+  font-size: 115%;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ─── Chart label readability ───────────────────────────────────────────── */
+.presentation-mode .recharts-text,
+.presentation-mode .recharts-legend-item-text,
+.presentation-mode .recharts-label,
+.presentation-mode .chart-label {
+  font-size: 0.8rem !important;
+  font-weight: 500;
+}
+
+/* ─── Border contrast boost (opacity on existing token values) ───────────── */
+.presentation-mode {
+  --border-presentation-mix: color-mix(
+    in oklch,
+    oklch(var(--border)) 80%,
+    oklch(var(--foreground))
+  );
+}
+
+.presentation-mode .border,
+.presentation-mode [class*="border-"] {
+  /* Slightly more opaque borders — we can't override the token itself
+     without side effects, so we boost specific structural borders. */
+  --tw-ring-opacity: 1;
+}
+
+.presentation-mode .divide-border > * + *,
+.presentation-mode [data-slot="card"],
+.presentation-mode [data-slot="table"] {
+  border-color: color-mix(
+    in oklch,
+    oklch(var(--border)) 80%,
+    oklch(var(--foreground) / 0.1)
+  );
+}
+
+/* ─── Card breathing room ────────────────────────────────────────────────── */
+.presentation-mode [data-slot="card"],
+.presentation-mode .card {
+  padding: 1.75rem !important;
+}
+
+/* ─── Line height elevation ──────────────────────────────────────────────── */
+.presentation-mode p,
+.presentation-mode li,
+.presentation-mode td,
+.presentation-mode th,
+.presentation-mode .text-sm,
+.presentation-mode .text-xs {
+  line-height: 1.7;
+}
+
+/* ─── Main content area accent stripe ───────────────────────────────────── */
+.presentation-mode [data-main-content],
+.presentation-mode main {
+  border-top: 3px solid oklch(var(--primary) / 0.55);
+}
+
+/* ─── Table readability ──────────────────────────────────────────────────── */
+.presentation-mode tr,
+.presentation-mode [role="row"] {
+  min-height: 3rem;
+}
+
+.presentation-mode td,
+.presentation-mode th {
+  padding-top: 0.875rem !important;
+  padding-bottom: 0.875rem !important;
+  font-size: 0.875rem;
+}
+
+.presentation-mode th {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Walkthrough highlight overlay ─────────────────────────────────────── */
+/* Used by WalkthroughOverlay to spotlight target elements. */
+.walkthrough-highlight {
+  outline: 2px solid var(--color-accent, oklch(var(--primary)));
+  outline-offset: 4px;
+  border-radius: 6px;
+  transition: outline 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+/* ─── Reduce motion respect ──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .walkthrough-highlight {
+    transition: none;
+  }
+}
+
+.walkthrough-highlight {
+  outline: 2px solid oklch(var(--color-accent-cyan) / 0.7) !important;
+  outline-offset: 3px;
+  border-radius: var(--radius-md);
+  transition: outline var(--duration-base) var(--ease-smooth);
+}

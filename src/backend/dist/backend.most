@@ -1,0 +1,1616 @@
+// Version: 4.0.0
+type AccessControlState__45017055 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__605269027<Principal, UserRole__1073662873>
+  };
+type ActivityActorRole__11625689 =
+  {#Admin; #Diagnostic; #Hospital; #Patient; #Pharmacy};
+type ActivityActorRole__642997289 =
+  {#Admin; #Diagnostic; #Hospital; #Patient; #Pharmacy};
+type ActivityActorRole__992806153 =
+  {#Admin; #Diagnostic; #Hospital; #Patient; #Pharmacy};
+type ActivityEventType__141736326 =
+  {
+    #BookingAccepted;
+    #BookingReceived;
+    #CSVUploaded;
+    #ConsentAccessGranted;
+    #ConsentAccessRevoked;
+    #ConsentGranted;
+    #ConsentRevoked;
+    #DiagnosticBooked;
+    #DoseMarkedTaken;
+    #EcosystemSyncStats;
+    #ExpiryAlertTriggered;
+    #ExpiryWarningTriggered;
+    #HospitalInventoryUpdated;
+    #HospitalMedicineAdded;
+    #InventoryItemAdded;
+    #InventoryStatusChanged;
+    #MedicineAddedManually;
+    #MedicineSold;
+    #MedicineSyncedFromPharmacy;
+    #MedicineSyncedToPatient;
+    #PatientAdherenceViewed;
+    #QRScanCompleted;
+    #ReminderCompleted;
+    #ReminderCreated;
+    #ReminderMissed;
+    #ReportCompleted;
+    #ReportUploaded;
+    #ReportViewedDownloaded;
+    #RestockFulfilled;
+    #RoleChanged;
+    #SampleCollected;
+    #SystemAlert;
+    #TelegramConnected;
+    #TelegramDisconnected;
+    #TestProcessingStarted;
+    #UserCreated
+  };
+type ActivityEventType__364441545 =
+  {
+    #BookingAccepted;
+    #BookingReceived;
+    #CSVUploaded;
+    #ConsentAccessGranted;
+    #ConsentAccessRevoked;
+    #ConsentGranted;
+    #ConsentRevoked;
+    #DiagnosticBooked;
+    #DoseMarkedTaken;
+    #EcosystemSyncStats;
+    #ExpiryAlertTriggered;
+    #ExpiryWarningTriggered;
+    #HospitalInventoryUpdated;
+    #HospitalMedicineAdded;
+    #InventoryItemAdded;
+    #InventoryStatusChanged;
+    #MedicineAddedManually;
+    #MedicineSold;
+    #MedicineSyncedFromPharmacy;
+    #MedicineSyncedToPatient;
+    #PatientAdherenceViewed;
+    #QRScanCompleted;
+    #ReminderCompleted;
+    #ReminderCreated;
+    #ReminderMissed;
+    #ReportCompleted;
+    #ReportUploaded;
+    #ReportViewedDownloaded;
+    #RestockFulfilled;
+    #RoleChanged;
+    #SampleCollected;
+    #SystemAlert;
+    #TelegramConnected;
+    #TelegramDisconnected;
+    #TestProcessingStarted;
+    #UserCreated
+  };
+type ActivityEventType__695202973 =
+  {
+    #BookingAccepted;
+    #BookingReceived;
+    #CSVUploaded;
+    #ConsentAccessGranted;
+    #ConsentAccessRevoked;
+    #ConsentGranted;
+    #ConsentRevoked;
+    #DiagnosticBooked;
+    #DoseMarkedTaken;
+    #EcosystemSyncStats;
+    #ExpiryAlertTriggered;
+    #ExpiryWarningTriggered;
+    #HospitalInventoryUpdated;
+    #HospitalMedicineAdded;
+    #InventoryItemAdded;
+    #InventoryStatusChanged;
+    #MedicineAddedManually;
+    #MedicineSold;
+    #MedicineSyncedFromPharmacy;
+    #MedicineSyncedToPatient;
+    #PatientAdherenceViewed;
+    #QRScanCompleted;
+    #ReminderCompleted;
+    #ReminderCreated;
+    #ReminderMissed;
+    #ReportCompleted;
+    #ReportUploaded;
+    #ReportViewedDownloaded;
+    #RestockFulfilled;
+    #RoleChanged;
+    #SampleCollected;
+    #SystemAlert;
+    #TelegramConnected;
+    #TelegramDisconnected;
+    #TestProcessingStarted;
+    #UserCreated
+  };
+type ActivityEvent__1011686821 =
+  {
+    actorPrincipal : Principal;
+    actorRole : UserRole__774180978;
+    description : Text;
+    eventType : Text;
+    id : Text;
+    relatedId : ?Text;
+    relatedType : ?Text;
+    timestamp : Int
+  };
+type ActivityEvent__523671481 =
+  {
+    eventActor : {principalId : Principal; role : ActivityActorRole__11625689};
+    eventType : ActivityEventType__364441545;
+    id : Text;
+    metadata : ?Text;
+    var readBy : [Principal];
+    resourceId : ?Text;
+    timestamp : Int
+  };
+type ActivityEvent__707953482 =
+  {
+    eventActor :
+      {principalId : Principal; role : ActivityActorRole__642997289};
+    eventType : ActivityEventType__141736326;
+    id : Text;
+    metadata : ?Text;
+    var readBy : [Principal];
+    resourceId : ?Text;
+    timestamp : Int
+  };
+type ActivityEvent__970395232 =
+  {
+    eventActor :
+      {principalId : Principal; role : ActivityActorRole__992806153};
+    eventType : ActivityEventType__695202973;
+    id : Text;
+    metadata : ?Text;
+    var readBy : [Principal];
+    resourceId : ?Text;
+    timestamp : Int
+  };
+type Appointment__570764218 =
+  {
+    dateTime : Timestamp__301639476;
+    id : Text;
+    notes : Text;
+    patientName : Text;
+    status : Text
+  };
+type Appointment__990158167 =
+  {
+    dateTime : Int;
+    id : Text;
+    notes : Text;
+    patientName : Text;
+    status : Text
+  };
+type BookingStatusEntry__470771569 =
+  {note : Text; status : BookingStatus__915120354; timestamp : Int};
+type BookingStatusEntry__763229758 =
+  {note : Text; status : BookingStatus__379453948; timestamp : Int};
+type BookingStatusEntry__886202016 =
+  {
+    note : Text;
+    status : BookingStatus__462718074;
+    timestamp : Timestamp__301639476
+  };
+type BookingStatus__379453948 =
+  {#Booked; #Completed; #Confirmed; #InProgress; #ReportUploaded};
+type BookingStatus__462718074 =
+  {#Booked; #Completed; #Confirmed; #InProgress; #ReportUploaded};
+type BookingStatus__915120354 =
+  {#Booked; #Completed; #Confirmed; #InProgress; #ReportUploaded};
+type ConsentAuditEntry__10184999 =
+  {action : Text; field : Text; timestamp : Int};
+type ConsentAuditEntry__59128842 =
+  {action : Text; field : Text; timestamp : Int};
+type ConsentAuditEntry__713750728 =
+  {action : Text; field : Text; timestamp : Timestamp__301639476};
+type ConsentRecord__192691777 =
+  {
+    adherenceSharing : Bool;
+    auditTrail : [ConsentAuditEntry__59128842];
+    diagnosticAccess : Bool;
+    id : Text;
+    lastUpdated : Int;
+    patientPrincipal : Principal;
+    prescriptionSharing : Bool
+  };
+type ConsentRecord__25085024 =
+  {
+    adherenceSharing : Bool;
+    auditTrail : [ConsentAuditEntry__10184999];
+    diagnosticAccess : Bool;
+    id : Text;
+    lastUpdated : Int;
+    patientPrincipal : Principal;
+    prescriptionSharing : Bool
+  };
+type ConsentRecord__266988941 =
+  {
+    adherenceSharing : Bool;
+    auditTrail : [ConsentAuditEntry__713750728];
+    diagnosticAccess : Bool;
+    id : Text;
+    lastUpdated : Timestamp__301639476;
+    patientPrincipal : Principal;
+    prescriptionSharing : Bool
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type DiagnosticBooking__204785282 =
+  {
+    createdAt : Timestamp__301639476;
+    id : Text;
+    labPrincipal : Principal;
+    patientPrincipal : Principal;
+    preferredDate : Text;
+    reason : ?Text;
+    reportUploadedAt : ?Timestamp__301639476;
+    reportUrl : ?Text;
+    status : BookingStatus__462718074;
+    statusHistory : [BookingStatusEntry__886202016];
+    testType : Text
+  };
+type DiagnosticBooking__654706126 =
+  {
+    createdAt : Int;
+    id : Text;
+    labPrincipal : Principal;
+    patientPrincipal : Principal;
+    preferredDate : Text;
+    reason : ?Text;
+    reportUploadedAt : ?Int;
+    reportUrl : ?Text;
+    status : BookingStatus__379453948;
+    statusHistory : [BookingStatusEntry__763229758];
+    testType : Text
+  };
+type DiagnosticBooking__984588101 =
+  {
+    createdAt : Int;
+    id : Text;
+    labPrincipal : Principal;
+    patientPrincipal : Principal;
+    preferredDate : Text;
+    reason : ?Text;
+    reportUploadedAt : ?Int;
+    reportUrl : ?Text;
+    status : BookingStatus__915120354;
+    statusHistory : [BookingStatusEntry__470771569];
+    testType : Text
+  };
+type DoseLog__243831745 =
+  {
+    id : Text;
+    isOnTime : Bool;
+    medicineId : Text;
+    takenAt : Int;
+    userPrincipal : Principal
+  };
+type DoseLog__703306671 =
+  {
+    id : Text;
+    isOnTime : Bool;
+    medicineId : Text;
+    takenAt : Timestamp__301639476;
+    userPrincipal : Principal
+  };
+type ExportLogEntry__142858307 =
+  {
+    errorMessage : ?Text;
+    exportType : Text;
+    fileSizeBytes : ?Nat;
+    fileType : Text;
+    filename : Text;
+    filtersApplied : Text;
+    id : Text;
+    status : Text;
+    timestamp : Int;
+    userId : Principal;
+    userRole : Text
+  };
+type ExportLogEntry__555062222 =
+  {
+    errorMessage : ?Text;
+    exportType : Text;
+    fileSizeBytes : ?Nat;
+    fileType : Text;
+    filename : Text;
+    filtersApplied : Text;
+    id : Text;
+    status : Text;
+    timestamp : Int;
+    userId : Principal;
+    userRole : Text
+  };
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type InventoryItem__246901158 =
+  {
+    category : MedicineCategory__254105514;
+    expiryDate : Int;
+    id : Text;
+    lastUpdated : Int;
+    maxThreshold : Nat;
+    medicineName : Text;
+    minThreshold : Nat;
+    pharmacyPrincipal : Principal;
+    stockQuantity : Nat
+  };
+type InventoryItem__536401864 =
+  {
+    category : MedicineCategory__515415816;
+    expiryDate : Timestamp__301639476;
+    id : Text;
+    lastUpdated : Timestamp__301639476;
+    maxThreshold : Nat;
+    medicineName : Text;
+    minThreshold : Nat;
+    pharmacyPrincipal : Principal;
+    stockQuantity : Nat
+  };
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type MedicineCategory__254105514 =
+  {#Capsule; #Injection; #Liquid; #Other; #Tablet; #Topical};
+type MedicineCategory__515415816 =
+  {#Capsule; #Injection; #Liquid; #Other; #Tablet; #Topical};
+type MedicineCategory__987404304 =
+  {#Capsule; #Injection; #Liquid; #Other; #Tablet; #Topical};
+type Medicine__732340486 =
+  {
+    category : MedicineCategory__254105514;
+    createdAt : Int;
+    dosage : Text;
+    expiryDate : Int;
+    frequency : Text;
+    id : Text;
+    name : Text;
+    ownerPrincipal : Principal;
+    prescriptionUrl : ?Text
+  };
+type Medicine__957744280 =
+  {
+    category : MedicineCategory__515415816;
+    createdAt : Timestamp__301639476;
+    dosage : Text;
+    expiryDate : Timestamp__301639476;
+    frequency : Text;
+    id : Text;
+    name : Text;
+    ownerPrincipal : Principal;
+    prescriptionUrl : ?Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__263273511 =
+  {
+    accessControlState : AccessControlState__45017055;
+    activityEvents : Map__605269027<Text, ActivityEvent__1011686821>;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    consents : Map__605269027<Principal, ConsentRecord__192691777>;
+    diagnosticBookings : Map__605269027<Text, DiagnosticBooking__654706126>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category : MedicineCategory__987404304;
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category : MedicineCategory__987404304;
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    notifications : Map__605269027<Text, NotificationRecord__811037863>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    syncLogs : Map__605269027<Text, PharmacySyncLog__449865182>;
+    syncedMedicines : Map__605269027<Text, SyncedMedicine__437112385>;
+    telegramLogs :
+      Map__605269027<Text,
+                      {
+                        errorMessage : ?Text;
+                        id : Text;
+                        medicineId : Text;
+                        medicineName : Text;
+                        reminderTime : Text;
+                        status : Text;
+                        timestamp : Int;
+                        userPrincipal : Principal
+                      }>;
+    telegramState : {var botToken : ?Text};
+    users : Map__605269027<Principal, NewUserProfile__270356416>
+  };
+type NewActor__379328297 =
+  {
+    accessControlState : AccessControlState__45017055;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    telegramLogs :
+      Map__605269027<Text,
+                      {
+                        errorMessage : ?Text;
+                        id : Text;
+                        medicineId : Text;
+                        medicineName : Text;
+                        reminderTime : Text;
+                        status : Text;
+                        timestamp : Int;
+                        userPrincipal : Principal
+                      }>;
+    telegramState : {var botToken : ?Text};
+    users : Map__605269027<Principal, NewUserProfile__1060392997>
+  };
+type NewActor__542314659 =
+  {
+    accessControlState : AccessControlState__45017055;
+    activityEvents : Map__605269027<Text, ActivityEvent__970395232>;
+    appointments : Map__605269027<Text, Appointment__990158167>;
+    consents : Map__605269027<Principal, ConsentRecord__25085024>;
+    diagnosticBookings : Map__605269027<Text, DiagnosticBooking__984588101>;
+    doseLogs : Map__605269027<Text, DoseLog__243831745>;
+    exportLogsStore : Map__605269027<Text, ExportLogEntry__142858307>;
+    inventory : Map__605269027<Text, InventoryItem__246901158>;
+    medicines : Map__605269027<Text, Medicine__732340486>;
+    notifications : Map__605269027<Text, NotificationRecord__491586508>;
+    orders : Map__605269027<Text, Order__846227741>;
+    reminders : Map__605269027<Text, Reminder__172729298>;
+    reports : Map__605269027<Text, Report__797287420>;
+    syncLogs : Map__605269027<Text, PharmacySyncLog__174559652>;
+    syncedMedicines : Map__605269027<Text, SyncedMedicine__843685181>;
+    telegramLogs : Map__605269027<Text, TelegramLog__117868048>;
+    telegramState : {var botToken : ?Text};
+    users : Map__605269027<Principal, UserProfile__425095950>
+  };
+type NewActor__566393922 =
+  {
+    accessControlState : AccessControlState__45017055;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    users :
+      Map__605269027<Principal,
+                      {
+                        email : Text;
+                        id : Text;
+                        isActive : Bool;
+                        name : Text;
+                        principal : Principal;
+                        registrationDate : Int;
+                        role : {#Admin; #Hospital; #Lab; #Patient; #Pharmacy}
+                      }>
+  };
+type NewActor__884227146 = OldActor__61622673;
+type NewActor__934448885 = OldActor__1033177008;
+type NewState__635806861 =
+  {activityEvents : Map__605269027<Text, ActivityEvent__707953482>};
+type NewUserProfile__1060392997 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    principal : Principal;
+    registrationDate : Int;
+    role : {#Admin; #Hospital; #Lab; #Patient; #Pharmacy};
+    telegramChatId : ?Text;
+    telegramEnabled : Bool
+  };
+type NewUserProfile__270356416 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    phone : ?Text;
+    principal : Principal;
+    registrationDate : Int;
+    role : UserRole__774180978;
+    telegramChatId : ?Text;
+    telegramEnabled : Bool
+  };
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type NotifType__70558938 =
+  {
+    #BookingCompleted;
+    #BookingConfirmed;
+    #ConsentChanged;
+    #ExpiringSoon;
+    #LowStock;
+    #MedicineSynced;
+    #ReminderMissed;
+    #ReportReady
+  };
+type NotifType__852808086 =
+  {
+    #BookingCompleted;
+    #BookingConfirmed;
+    #ConsentChanged;
+    #ExpiringSoon;
+    #LowStock;
+    #MedicineSynced;
+    #ReminderMissed;
+    #ReportReady
+  };
+type NotifType__931498138 =
+  {
+    #BookingCompleted;
+    #BookingConfirmed;
+    #ConsentChanged;
+    #ExpiringSoon;
+    #LowStock;
+    #MedicineSynced;
+    #ReminderMissed;
+    #ReportReady
+  };
+type NotificationRecord__491586508 =
+  {
+    createdAt : Int;
+    id : Text;
+    isRead : Bool;
+    message : Text;
+    notifType : NotifType__70558938;
+    recipientPrincipal : Principal;
+    relatedId : ?Text;
+    role : UserRole__526241843
+  };
+type NotificationRecord__666145773 =
+  {
+    createdAt : Timestamp__301639476;
+    id : Text;
+    isRead : Bool;
+    message : Text;
+    notifType : NotifType__852808086;
+    recipientPrincipal : Principal;
+    relatedId : ?Text;
+    role : UserRole__451090586
+  };
+type NotificationRecord__811037863 =
+  {
+    createdAt : Int;
+    id : Text;
+    isRead : Bool;
+    message : Text;
+    notifType : NotifType__931498138;
+    recipientPrincipal : Principal;
+    relatedId : ?Text;
+    role : UserRole__774180978
+  };
+type OldActivityEvent__660857865 =
+  {
+    actorPrincipal : Principal;
+    actorRole : {#Admin; #Hospital; #Lab; #Patient; #Pharmacy};
+    description : Text;
+    eventType : Text;
+    id : Text;
+    relatedId : ?Text;
+    relatedType : ?Text;
+    timestamp : Int
+  };
+type OldActor__1033177008 =
+  {
+    accessControlState : AccessControlState__45017055;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    telegramLogs :
+      Map__605269027<Text,
+                      {
+                        errorMessage : ?Text;
+                        id : Text;
+                        medicineId : Text;
+                        medicineName : Text;
+                        reminderTime : Text;
+                        status : Text;
+                        timestamp : Int;
+                        userPrincipal : Principal
+                      }>;
+    telegramState : {var botToken : ?Text};
+    users : Map__605269027<Principal, OldUserProfile__876272077>
+  };
+type OldActor__1063373031 =
+  {
+    accessControlState : AccessControlState__45017055;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category : MedicineCategory__987404304;
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category : MedicineCategory__987404304;
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    telegramLogs :
+      Map__605269027<Text,
+                      {
+                        errorMessage : ?Text;
+                        id : Text;
+                        medicineId : Text;
+                        medicineName : Text;
+                        reminderTime : Text;
+                        status : Text;
+                        timestamp : Int;
+                        userPrincipal : Principal
+                      }>;
+    telegramState : {var botToken : ?Text};
+    users : Map__605269027<Principal, OldUserProfile__615565207>
+  };
+type OldActor__170687386 = {};
+type OldActor__615899846 =
+  {
+    accessControlState : AccessControlState__45017055;
+    activityEvents : Map__605269027<Text, ActivityEvent__970395232>;
+    appointments : Map__605269027<Text, Appointment__990158167>;
+    consents : Map__605269027<Principal, ConsentRecord__25085024>;
+    diagnosticBookings : Map__605269027<Text, DiagnosticBooking__984588101>;
+    doseLogs : Map__605269027<Text, DoseLog__243831745>;
+    inventory : Map__605269027<Text, InventoryItem__246901158>;
+    medicines : Map__605269027<Text, Medicine__732340486>;
+    notifications : Map__605269027<Text, NotificationRecord__491586508>;
+    orders : Map__605269027<Text, Order__846227741>;
+    reminders : Map__605269027<Text, Reminder__172729298>;
+    reports : Map__605269027<Text, Report__797287420>;
+    syncLogs : Map__605269027<Text, PharmacySyncLog__174559652>;
+    syncedMedicines : Map__605269027<Text, SyncedMedicine__843685181>;
+    telegramLogs : Map__605269027<Text, TelegramLog__117868048>;
+    telegramState : {var botToken : ?Text};
+    users : Map__605269027<Principal, UserProfile__425095950>
+  };
+type OldActor__61622673 =
+  {
+    accessControlState : AccessControlState__45017055;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    users :
+      Map__605269027<Principal,
+                      {
+                        email : Text;
+                        id : Text;
+                        isActive : Bool;
+                        name : Text;
+                        principal : Principal;
+                        registrationDate : Int;
+                        role : {#Admin; #Hospital; #Lab; #Patient; #Pharmacy}
+                      }>
+  };
+type OldActor__761488035 =
+  {
+    accessControlState : AccessControlState__45017055;
+    appointments :
+      Map__605269027<Text,
+                      {
+                        dateTime : Int;
+                        id : Text;
+                        notes : Text;
+                        patientName : Text;
+                        status : Text
+                      }>;
+    doseLogs :
+      Map__605269027<Text,
+                      {
+                        id : Text;
+                        isOnTime : Bool;
+                        medicineId : Text;
+                        takenAt : Int;
+                        userPrincipal : Principal
+                      }>;
+    inventory :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        expiryDate : Int;
+                        id : Text;
+                        lastUpdated : Int;
+                        maxThreshold : Nat;
+                        medicineName : Text;
+                        minThreshold : Nat;
+                        pharmacyPrincipal : Principal;
+                        stockQuantity : Nat
+                      }>;
+    medicines :
+      Map__605269027<Text,
+                      {
+                        category :
+                          {
+                            #Capsule;
+                            #Injection;
+                            #Liquid;
+                            #Other;
+                            #Tablet;
+                            #Topical
+                          };
+                        createdAt : Int;
+                        dosage : Text;
+                        expiryDate : Int;
+                        frequency : Text;
+                        id : Text;
+                        name : Text;
+                        ownerPrincipal : Principal;
+                        prescriptionUrl : ?Text
+                      }>;
+    orders :
+      Map__605269027<Text,
+                      {
+                        deliveryDate : ?Int;
+                        id : Text;
+                        medicineName : Text;
+                        orderDate : Int;
+                        patientId : Text;
+                        pharmacyId : Text;
+                        quantity : Nat;
+                        status : {#Cancelled; #Delivered; #Pending; #Shipped}
+                      }>;
+    reminders :
+      Map__605269027<Text,
+                      {
+                        createdAt : Int;
+                        id : Text;
+                        isEnabled : Bool;
+                        medicineId : Text;
+                        reminderTime : Text;
+                        userPrincipal : Principal;
+                        voiceEnabled : Bool
+                      }>;
+    reports :
+      Map__605269027<Text,
+                      {
+                        fileUrl : Text;
+                        id : Text;
+                        labPrincipal : Principal;
+                        patientId : Text;
+                        reportType : Text;
+                        uploadDate : Int
+                      }>;
+    users : Map__605269027<Principal, OldUserProfile__621525795>
+  };
+type OldState__366496676 =
+  {activityEvents : Map__605269027<Text, OldActivityEvent__660857865>};
+type OldUserProfile__615565207 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    principal : Principal;
+    registrationDate : Int;
+    role : UserRole__774180978;
+    telegramChatId : ?Text;
+    telegramEnabled : Bool
+  };
+type OldUserProfile__621525795 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    principal : Principal;
+    registrationDate : Int;
+    role : {#Admin; #Hospital; #Lab; #Patient; #Pharmacy}
+  };
+type OldUserProfile__876272077 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    principal : Principal;
+    registrationDate : Int;
+    role : {#Admin; #Hospital; #Lab; #Patient; #Pharmacy};
+    telegramChatId : ?Text;
+    telegramEnabled : Bool
+  };
+type OrderStatus__393009242 = {#Cancelled; #Delivered; #Pending; #Shipped};
+type Order__814539984 =
+  {
+    deliveryDate : ?Timestamp__301639476;
+    id : Text;
+    medicineName : Text;
+    orderDate : Timestamp__301639476;
+    patientId : Text;
+    pharmacyId : Text;
+    quantity : Nat;
+    status : OrderStatus__393009242
+  };
+type Order__846227741 =
+  {
+    deliveryDate : ?Int;
+    id : Text;
+    medicineName : Text;
+    orderDate : Int;
+    patientId : Text;
+    pharmacyId : Text;
+    quantity : Nat;
+    status : {#Cancelled; #Delivered; #Pending; #Shipped}
+  };
+type PharmacySyncLog__174559652 =
+  {
+    batchNumber : Text;
+    errorMessage : ?Text;
+    expiryDate : Int;
+    id : Text;
+    medicineName : Text;
+    patientPrincipal : Principal;
+    pharmacyPrincipal : Principal;
+    quantity : Nat;
+    status : SyncStatus__569388229;
+    syncedAt : Int
+  };
+type PharmacySyncLog__449865182 =
+  {
+    batchNumber : Text;
+    errorMessage : ?Text;
+    expiryDate : Int;
+    id : Text;
+    medicineName : Text;
+    patientPrincipal : Principal;
+    pharmacyPrincipal : Principal;
+    quantity : Nat;
+    status : SyncStatus__905929075;
+    syncedAt : Int
+  };
+type PharmacySyncLog__809374602 =
+  {
+    batchNumber : Text;
+    errorMessage : ?Text;
+    expiryDate : Timestamp__301639476;
+    id : Text;
+    medicineName : Text;
+    patientPrincipal : Principal;
+    pharmacyPrincipal : Principal;
+    quantity : Nat;
+    status : {#Duplicate; #Failed; #Success};
+    syncedAt : Timestamp__301639476
+  };
+type Reminder__112458103 =
+  {
+    createdAt : Timestamp__301639476;
+    id : Text;
+    isEnabled : Bool;
+    medicineId : Text;
+    reminderTime : Text;
+    userPrincipal : Principal;
+    voiceEnabled : Bool
+  };
+type Reminder__172729298 =
+  {
+    createdAt : Int;
+    id : Text;
+    isEnabled : Bool;
+    medicineId : Text;
+    reminderTime : Text;
+    userPrincipal : Principal;
+    voiceEnabled : Bool
+  };
+type Report__570982080 =
+  {
+    fileUrl : Text;
+    id : Text;
+    labPrincipal : Principal;
+    patientId : Text;
+    reportType : Text;
+    uploadDate : Timestamp__301639476
+  };
+type Report__797287420 =
+  {
+    fileUrl : Text;
+    id : Text;
+    labPrincipal : Principal;
+    patientId : Text;
+    reportType : Text;
+    uploadDate : Int
+  };
+type SyncStatus__569388229 = {#Duplicate; #Failed; #Success};
+type SyncStatus__905929075 = {#Duplicate; #Failed; #Success};
+type SyncedMedicine__437112385 =
+  {
+    batchNumber : Text;
+    category : MedicineCategory__987404304;
+    createdAt : Int;
+    dosage : Text;
+    expiryDate : Int;
+    frequency : Text;
+    id : Text;
+    name : Text;
+    ownerPrincipal : Principal;
+    prescriptionUrl : ?Text;
+    purchaseTimestamp : Int;
+    sourcePharmacy : Text;
+    sourcePrincipal : Principal
+  };
+type SyncedMedicine__843685181 =
+  {
+    batchNumber : Text;
+    category : MedicineCategory__254105514;
+    createdAt : Int;
+    dosage : Text;
+    expiryDate : Int;
+    frequency : Text;
+    id : Text;
+    name : Text;
+    ownerPrincipal : Principal;
+    prescriptionUrl : ?Text;
+    purchaseTimestamp : Int;
+    sourcePharmacy : Text;
+    sourcePrincipal : Principal
+  };
+type SyncedMedicine__847054804 =
+  {
+    batchNumber : Text;
+    category : MedicineCategory__515415816;
+    createdAt : Timestamp__301639476;
+    dosage : Text;
+    expiryDate : Timestamp__301639476;
+    frequency : Text;
+    id : Text;
+    name : Text;
+    ownerPrincipal : Principal;
+    prescriptionUrl : ?Text;
+    purchaseTimestamp : Timestamp__301639476;
+    sourcePharmacy : Text;
+    sourcePrincipal : Principal
+  };
+type TelegramLog__117868048 =
+  {
+    errorMessage : ?Text;
+    id : Text;
+    medicineId : Text;
+    medicineName : Text;
+    reminderTime : Text;
+    status : Text;
+    timestamp : Int;
+    userPrincipal : Principal
+  };
+type TelegramLog__77333949 =
+  {
+    errorMessage : ?Text;
+    id : Text;
+    medicineId : Text;
+    medicineName : Text;
+    reminderTime : Text;
+    status : Text;
+    timestamp : Int;
+    userPrincipal : Principal
+  };
+type Timestamp__301639476 = Int;
+type UserProfile__277265826 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    phone : ?Text;
+    principal : Principal;
+    registrationDate : Timestamp__301639476;
+    role : UserRole__451090586;
+    telegramChatId : ?Text;
+    telegramEnabled : Bool
+  };
+type UserProfile__425095950 =
+  {
+    email : Text;
+    id : Text;
+    isActive : Bool;
+    name : Text;
+    phone : ?Text;
+    principal : Principal;
+    registrationDate : Int;
+    role : UserRole__526241843;
+    telegramChatId : ?Text;
+    telegramEnabled : Bool
+  };
+type UserRole__1073662873 = {#admin; #guest; #user};
+type UserRole__451090586 = {#Admin; #Hospital; #Lab; #Patient; #Pharmacy};
+type UserRole__526241843 = {#Admin; #Hospital; #Lab; #Patient; #Pharmacy};
+type UserRole__774180978 = {#Admin; #Hospital; #Lab; #Patient; #Pharmacy};
+{
+  "20260520_000000_InitialState" :
+    (_old : OldActor__170687386) -> NewActor__566393922;
+  "20260520_120000_AddEcosystemState" :
+    (old : OldActor__61622673) -> NewActor__884227146;
+  "20260520_120000_AddTelegramFields" :
+    (old : OldActor__761488035) -> NewActor__379328297;
+  "20260520_130000_AddEcosystemState" :
+    (old : OldActor__1033177008) -> NewActor__934448885;
+  "20260520_140000_AddPhoneToUserProfile" :
+    (old : OldActor__1063373031) -> NewActor__263273511;
+  "20260520_150000_UpdateActivityEventType" :
+    (old : OldState__366496676) -> NewState__635806861;
+  "20260520_160000_AddExportLogsStore" :
+    (old : OldActor__615899846) -> NewActor__542314659
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__605269027<Principal, UserRole__1073662873>
+    };
+  stable activityEvents :
+    {
+      var root : Node__46230540<Text, ActivityEvent__523671481>;
+      var size : Nat__490723111
+    };
+  stable appointments :
+    {
+      var root : Node__46230540<Text, Appointment__570764218>;
+      var size : Nat__490723111
+    };
+  stable consents :
+    {
+      var root : Node__46230540<Principal, ConsentRecord__266988941>;
+      var size : Nat__490723111
+    };
+  stable diagnosticBookings :
+    {
+      var root : Node__46230540<Text, DiagnosticBooking__204785282>;
+      var size : Nat__490723111
+    };
+  stable doseLogs :
+    {
+      var root : Node__46230540<Text, DoseLog__703306671>;
+      var size : Nat__490723111
+    };
+  stable exportLogsStore :
+    {
+      var root : Node__46230540<Text, ExportLogEntry__555062222>;
+      var size : Nat__490723111
+    };
+  stable inventory :
+    {
+      var root : Node__46230540<Text, InventoryItem__536401864>;
+      var size : Nat__490723111
+    };
+  stable medicines :
+    {
+      var root : Node__46230540<Text, Medicine__957744280>;
+      var size : Nat__490723111
+    };
+  stable notifications :
+    {
+      var root : Node__46230540<Text, NotificationRecord__666145773>;
+      var size : Nat__490723111
+    };
+  stable orders :
+    {
+      var root : Node__46230540<Text, Order__814539984>;
+      var size : Nat__490723111
+    };
+  stable reminders :
+    {
+      var root : Node__46230540<Text, Reminder__112458103>;
+      var size : Nat__490723111
+    };
+  stable reports :
+    {
+      var root : Node__46230540<Text, Report__570982080>;
+      var size : Nat__490723111
+    };
+  stable syncLogs :
+    {
+      var root : Node__46230540<Text, PharmacySyncLog__809374602>;
+      var size : Nat__490723111
+    };
+  stable syncedMedicines :
+    {
+      var root : Node__46230540<Text, SyncedMedicine__847054804>;
+      var size : Nat__490723111
+    };
+  stable telegramLogs :
+    {
+      var root : Node__46230540<Text, TelegramLog__77333949>;
+      var size : Nat__490723111
+    };
+  stable telegramState : {var botToken : ?Text};
+  stable users :
+    {
+      var root : Node__46230540<Principal, UserProfile__277265826>;
+      var size : Nat__490723111
+    }
+};
