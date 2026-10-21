@@ -1,6 +1,6 @@
 # MediVault — Intelligent Healthcare Operations Platform
 
-> A production-grade multi-role healthcare ecosystem platform focused on medicine lifecycle intelligence, adherence tracking, auditability, operational workflows, and connected healthcare coordination.
+> A production-grade  multi-role healthcare ecosystem platform focused on medicine lifecycle intelligence, adherence tracking, auditability, operational workflows, and connected healthcare coordination.
 
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-success)
 ![Frontend](https://img.shields.io/badge/Frontend-React%20%2B%20Vite-blue)
